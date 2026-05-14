@@ -1,0 +1,10 @@
+2026-05-14 21:38:54.403 [restartedMain] INFO  c.project.ProjectRestApiApplication.logStarting(54) - Starting ProjectRestApiApplication using Java 21.0.4 with PID 16096 (C:\Users\juszc\eclipse-2024-09\workspace\project-rest-api\bin\main started by juszc in C:\Users\juszc\eclipse-2024-09\workspace\project-rest-api)
+2026-05-14 21:38:54.405 [restartedMain] INFO  c.project.ProjectRestApiApplication.logStartupProfileInfo(652) - No active profile set, falling back to 1 default profile: "default"
+2026-05-14 21:40:08.863 [restartedMain] INFO  c.project.ProjectRestApiApplication.logStarting(54) - Starting ProjectRestApiApplication using Java 21.0.4 with PID 26728 (C:\Users\juszc\eclipse-2024-09\workspace\project-rest-api\bin\main started by juszc in C:\Users\juszc\eclipse-2024-09\workspace\project-rest-api)
+2026-05-14 21:40:08.870 [restartedMain] INFO  c.project.ProjectRestApiApplication.logStartupProfileInfo(652) - No active profile set, falling back to 1 default profile: "default"
+2026-05-14 21:40:16.191 [restartedMain] INFO  c.project.ProjectRestApiApplication.logStarted(60) - Started ProjectRestApiApplication in 8.062 seconds (process running for 8.845)
+2026-05-14 21:40:16.197 [restartedMain] INFO  c.project.ProjectRestApiApplication.main(16) - Aplikacja Project REST API została uruchomiona
+2026-05-14 21:41:11.877 [main] INFO  c.project.ProjectRestApiApplication.logStarting(54) - Starting ProjectRestApiApplication v0.0.1-SNAPSHOT using Java 21.0.8 with PID 7356 (C:\Users\juszc\eclipse-2024-09\workspace\project-rest-api\build\libs\project-rest-api-0.0.1-SNAPSHOT.jar started by juszc in C:\Users\juszc\eclipse-2024-09\workspace\project-rest-api)
+2026-05-14 21:41:11.879 [main] INFO  c.project.ProjectRestApiApplication.logStartupProfileInfo(652) - No active profile set, falling back to 1 default profile: "default"
+2026-05-14 21:41:21.355 [main] INFO  c.project.ProjectRestApiApplication.logStarted(60) - Started ProjectRestApiApplication in 10.302 seconds (process running for 11.071)
+2026-05-14 21:41:21.364 [main] INFO  c.project.ProjectRestApiApplication.main(16) - Aplikacja Project REST API została uruchomiona
