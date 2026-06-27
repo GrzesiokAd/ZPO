@@ -1,0 +1,12 @@
+2026-06-26 10:56:11.077 [restartedMain] INFO  c.project.ProjectMonolitApplication.logStarting(54) - Starting ProjectMonolitApplication using Java 21.0.4 with PID 26684 (C:\Users\juszc\eclipse-2024-09\workspace\project-monolit\bin\main started by juszc in C:\Users\juszc\eclipse-2024-09\workspace\project-monolit)
+2026-06-26 10:56:11.079 [restartedMain] INFO  c.project.ProjectMonolitApplication.logStartupProfileInfo(652) - No active profile set, falling back to 1 default profile: "default"
+2026-06-26 10:56:22.550 [restartedMain] INFO  c.project.ProjectMonolitApplication.logStarted(60) - Started ProjectMonolitApplication in 12.518 seconds (process running for 13.718)
+2026-06-26 10:56:22.564 [restartedMain] INFO  c.project.ProjectMonolitApplication.main(16) - Aplikacja Project Monolit została uruchomiona
+2026-06-26 13:44:56.975 [restartedMain] INFO  c.project.ProjectMonolitApplication.logStarting(54) - Starting ProjectMonolitApplication using Java 21.0.4 with PID 23536 (C:\Users\juszc\eclipse-2024-09\workspace\project-monolit\bin\main started by juszc in C:\Users\juszc\eclipse-2024-09\workspace\project-monolit)
+2026-06-26 13:44:56.982 [restartedMain] INFO  c.project.ProjectMonolitApplication.logStartupProfileInfo(652) - No active profile set, falling back to 1 default profile: "default"
+2026-06-26 13:45:05.603 [restartedMain] INFO  c.project.ProjectMonolitApplication.logStarted(60) - Started ProjectMonolitApplication in 9.448 seconds (process running for 10.283)
+2026-06-26 13:45:05.611 [restartedMain] INFO  c.project.ProjectMonolitApplication.main(16) - Aplikacja Project Monolit została uruchomiona
+2026-06-26 13:50:16.241 [restartedMain] INFO  c.project.ProjectMonolitApplication.logStarting(54) - Starting ProjectMonolitApplication using Java 21.0.4 with PID 24204 (C:\Users\juszc\eclipse-2024-09\workspace\project-monolit\bin\main started by juszc in C:\Users\juszc\eclipse-2024-09\workspace\project-monolit)
+2026-06-26 13:50:16.242 [restartedMain] INFO  c.project.ProjectMonolitApplication.logStartupProfileInfo(652) - No active profile set, falling back to 1 default profile: "default"
+2026-06-26 13:50:24.517 [restartedMain] INFO  c.project.ProjectMonolitApplication.logStarted(60) - Started ProjectMonolitApplication in 9.063 seconds (process running for 9.88)
+2026-06-26 13:50:24.527 [restartedMain] INFO  c.project.ProjectMonolitApplication.main(16) - Aplikacja Project Monolit została uruchomiona

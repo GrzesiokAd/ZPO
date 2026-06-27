@@ -1,0 +1,9 @@
+Projekt jest połączoną wersją REST API oraz aplikacji webowej.
+
+1. Uruchom PostgreSQL i upewnij się, że istnieje baza danych projekty.
+2. Dane połączenia są w pliku src/main/resources/application.properties.
+3. Uruchom aplikację jako jeden projekt Spring Boot.
+4. Widok webowy jest pod adresem: http://localhost:8080/projektList
+5. Endpointy REST nadal są dostępne pod /api/... i wymagają logowania admin/admin.
+
+W monolicie front-end nie korzysta już z RestClienta ani z osobnej aplikacji na porcie 8081. Kontrolery Thymeleaf korzystają bezpośrednio z serwisów i repozytoriów JPA.

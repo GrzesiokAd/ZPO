@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link th:href="@{/css/list-style.css}" rel="stylesheet" />
+	<title>Lista studentów</title>
+</head>
+<body>
+	<div class="root">
+		<div th:replace="~{fragments :: nav}"></div>
+		<h1>Lista studentów</h1>
+
+		<form class="search-block" th:action="@{/studentList}" method="get">
+			<label for="nazwisko">Nazwisko</label>
+			<input id="nazwisko" type="text" name="nazwisko" th:value="${nazwisko}" />
+			<label for="nrIndeksu">Nr indeksu</label>
+			<input id="nrIndeksu" type="text" name="nrIndeksu" th:value="${nrIndeksu}" />
+			<button type="submit">Szukaj</button>
+			<a th:href="@{/studentList}">Wyczyść</a>
+		</form>
+
+		<p><a class="action-link" th:href="@{/studentEdit}">Dodaj studenta</a></p>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Imię</th>
+					<th>Nazwisko</th>
+					<th>Nr indeksu</th>
+					<th>E-mail</th>
+					<th>Stacjonarny</th>
+					<th>Akcje</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="student : ${studenci.content}">
+					<td th:text="${student.studentId}">1</td>
+					<td th:text="${student.imie}">Imię</td>
+					<td th:text="${student.nazwisko}">Nazwisko</td>
+					<td th:text="${student.nrIndeksu}">Nr indeksu</td>
+					<td th:text="${student.email}">e-mail</td>
+					<td th:text="${student.stacjonarny} ? 'tak' : 'nie'">tak</td>
+					<td>
+						<a th:href="@{/studentEdit(studentId=${student.studentId})}">Edytuj</a><br>
+						<a th:href="@{/studentEdit(studentId=${student.studentId},delete='true')}">Usuń</a>
+					</td>
+				</tr>
+				<tr th:if="${studenci.empty}">
+					<td colspan="7">Brak danych</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="pager">
+			<a th:if="${studenci.hasPrevious()}" th:href="@{/studentList(page=${studenci.number - 1},size=${studenci.size},nazwisko=${nazwisko},nrIndeksu=${nrIndeksu})}">Poprzednia</a>
+			<span th:text="${(studenci.number + 1) + ' / ' + (studenci.totalPages == 0 ? 1 : studenci.totalPages)}">1 / 1</span>
+			<a th:if="${studenci.hasNext()}" th:href="@{/studentList(page=${studenci.number + 1},size=${studenci.size},nazwisko=${nazwisko},nrIndeksu=${nrIndeksu})}">Następna</a>
+		</div>
+	</div>
+</body>
+</html>

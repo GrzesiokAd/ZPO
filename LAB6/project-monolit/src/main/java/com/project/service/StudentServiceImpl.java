@@ -1,0 +1,70 @@
+package com.project.service;
+
+import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.project.model.Projekt;
+import com.project.model.Student;
+import com.project.repository.StudentRepository;
+
+@Service
+public class StudentServiceImpl implements StudentService {
+
+    private StudentRepository studentRepository;
+
+    public StudentServiceImpl(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
+    @Override
+    public Optional<Student> getStudent(Integer studentId) {
+        return studentRepository.findById(studentId);
+    }
+
+    @Override
+    public Optional<Student> getStudentByNrIndeksu(String nrIndeksu) {
+        return studentRepository.findByNrIndeksu(nrIndeksu);
+    }
+
+    @Override
+    public Student setStudent(Student student) {
+        if (student.getEmail() != null && student.getEmail().isBlank()) {
+            student.setEmail(null);
+        }
+        if (student.getStacjonarny() == null) {
+            student.setStacjonarny(false);
+        }
+        return studentRepository.save(student);
+    }
+
+    @Override
+    @Transactional
+    public void deleteStudent(Integer studentId) {
+        studentRepository.findById(studentId).ifPresent(student -> {
+            for (Projekt projekt : student.getProjekty()) {
+                projekt.getStudenci().remove(student);
+            }
+            student.getProjekty().clear();
+            studentRepository.delete(student);
+        });
+    }
+
+    @Override
+    public Page<Student> getStudenci(Pageable pageable) {
+        return studentRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Student> searchByNrIndeksu(String nrIndeksu, Pageable pageable) {
+        return studentRepository.findByNrIndeksuStartsWith(nrIndeksu, pageable);
+    }
+
+    @Override
+    public Page<Student> searchByNazwisko(String nazwisko, Pageable pageable) {
+        return studentRepository.findByNazwiskoStartsWithIgnoreCase(nazwisko, pageable);
+    }
+}
