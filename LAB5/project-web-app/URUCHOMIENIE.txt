@@ -1,0 +1,22 @@
+Jak uruchomic projekt
+
+1. Najpierw uruchom projekt REST API z poprzedniego laboratorium na porcie 8080.
+2. Login i haslo do REST API sa ustawione w src/main/resources/application.properties:
+   rest.user.name=admin
+   rest.user.password=admin
+3. Ten projekt webowy uruchamia sie na porcie 8081.
+4. Po uruchomieniu wejdz w przegladarce na:
+   http://localhost:8081/
+   albo bezposrednio:
+   http://localhost:8081/projektList
+
+Co zostalo poprawione
+
+- build.gradle ustawiony zgodnie z instrukcja: Spring Boot 3.4.3 i spring-boot-starter-web.
+- Usunieto problem z przypadkowym uzyciem Spring Boot 4.0.6 i startera webmvc.
+- Poprawiono mapowanie odpowiedzi stronicowanych REST w RestResponsePage.
+- Modele maja zwykle konstruktory oraz gettery/settery, wiec projekt nie jest uzalezniony od poprawnej konfiguracji Lomboka w Eclipse.
+- Poprawiono widoki Thymeleaf dla projektow, studentow i zadan.
+- Dodano brakujacy link do listy zadan w menu.
+- Poprawiono bledne pola w szablonach, m.in. email/e-mail.
+- Zostawiono czysty projekt bez katalogow build, bin, .gradle i logs ze starego uruchomienia.

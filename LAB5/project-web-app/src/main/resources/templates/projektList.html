@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link th:href="@{/css/list-style.css}" rel="stylesheet" />
+	<title>Lista projektów</title>
+</head>
+<body>
+	<div class="root">
+		<div th:replace="~{fragments :: nav}"></div>
+		<h1>Lista projektów</h1>
+
+		<form class="search-block" th:action="@{/projektList}" method="get">
+			<label for="nazwa">Nazwa</label>
+			<input id="nazwa" type="text" name="nazwa" th:value="${nazwa}" />
+			<button type="submit">Szukaj</button>
+			<a th:href="@{/projektList}">Wyczyść</a>
+		</form>
+
+		<p><a class="action-link" th:href="@{/projektEdit}">Dodaj projekt</a></p>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nazwa</th>
+					<th>Opis</th>
+					<th>Utwórzony</th>
+					<th>Zmodyfikowany</th>
+					<th>Data oddania</th>
+					<th>Studenci</th>
+					<th>Akcje</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="projekt : ${projekty.content}">
+					<td th:text="${projekt.projektId}">1</td>
+					<td th:text="${projekt.nazwa}">Nazwa</td>
+					<td th:text="${projekt.opis}">Opis</td>
+					<td th:text="${projekt.dataczasUtworzenia == null ? '' : #temporals.format(projekt.dataczasUtworzenia, 'yyyy-MM-dd HH:mm:ss')}">Utwórzony</td>
+					<td th:text="${projekt.dataczasModyfikacji == null ? '' : #temporals.format(projekt.dataczasModyfikacji, 'yyyy-MM-dd HH:mm:ss')}">Zmodyfikowany</td>
+					<td th:text="${projekt.dataOddania == null ? '' : #temporals.format(projekt.dataOddania, 'yyyy-MM-dd')}">Data oddania</td>
+					<td th:text="${projekt.studenci == null ? 0 : projekt.studenci.size()}">0</td>
+					<td>
+						<a th:href="@{/projektEdit(projektId=${projekt.projektId})}">Edytuj</a><br>
+						<a th:href="@{/projektEdit(projektId=${projekt.projektId},delete='true')}">Usuń</a><br>
+						<a th:href="@{/zadanieList(projektId=${projekt.projektId})}">Zadania</a>
+					</td>
+				</tr>
+				<tr th:if="${projekty.empty}">
+					<td colspan="8">Brak danych</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="pager">
+			<a th:if="${projekty.hasPrevious()}" th:href="@{/projektList(page=${projekty.number - 1},size=${projekty.size},nazwa=${nazwa})}">Poprzednia</a>
+			<span th:text="${(projekty.number + 1) + ' / ' + (projekty.totalPages == 0 ? 1 : projekty.totalPages)}">1 / 1</span>
+			<a th:if="${projekty.hasNext()}" th:href="@{/projektList(page=${projekty.number + 1},size=${projekty.size},nazwa=${nazwa})}">Następna</a>
+		</div>
+	</div>
+</body>
+</html>

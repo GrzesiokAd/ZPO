@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link th:href="@{/css/edit-style.css}" rel="stylesheet" />
+	<title>Edycja projektu</title>
+</head>
+<body>
+	<div class="root" th:with="isDelete=${#strings.equalsIgnoreCase(param.delete,'true')}">
+		<div th:replace="~{fragments :: nav}"></div>
+		<form th:action="@{/projektEdit}" th:object="${projekt}" method="post"
+				th:with="akcja=*{projektId} ? (${isDelete} ? 'delete' : 'update') : 'create',
+				opis=*{projektId} ? (${isDelete} ? 'Usuń' : 'Aktualizuj') : 'Utwórz'" autocomplete="off">
+			<h1 th:text="${opis + ' projekt'}">Edytuj projekt</h1>
+
+			<div class="err" th:if="${#fields.hasErrors('*')}">
+				<ul>
+					<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Błąd</li>
+				</ul>
+			</div>
+
+			<div class="container">
+				<div class="btns-panel">
+					<input class="btn" type="submit" name="save" th:name="${akcja}" th:value="${opis}" />
+					<input class="btn" type="submit" name="cancel" value="Anuluj" />
+				</div>
+
+				<div th:if="*{projektId}">
+					<label for="projektId" class="lbl">Id:</label>
+					<input th:field="*{projektId}" class="fld" readonly />
+				</div>
+
+				<div>
+					<label for="nazwa" class="lbl">Nazwa:</label>
+					<input th:field="*{nazwa}" class="fld" th:classappend="${#fields.hasErrors('nazwa')} ? ' err-field'" size="45" th:readonly="${isDelete}" />
+					<span class="err" th:if="${#fields.hasErrors('nazwa')}" th:errors="*{nazwa}">Error</span>
+				</div>
+
+				<div>
+					<label for="opis" class="lbl">Opis:</label>
+					<textarea th:field="*{opis}" class="fld" rows="3" cols="47" th:readonly="${isDelete}">Opis</textarea>
+					<span class="err" th:if="${#fields.hasErrors('opis')}" th:errors="*{opis}">Error</span>
+				</div>
+
+				<div>
+					<label for="dataOddania" class="lbl">Data oddania:</label>
+					<input th:field="*{dataOddania}" class="fld" type="text" size="10" th:readonly="${isDelete}" />
+					<i>(RRRR-MM-DD)</i>
+				</div>
+
+				<fieldset>
+					<legend>Studenci projektu</legend>
+					<label class="check-row" th:each="student : ${studenci}">
+						<input type="checkbox" name="studentIds" th:value="${student.studentId}"
+								th:checked="${#lists.contains(selectedStudentIds, student.studentId)}" th:disabled="${isDelete}" />
+						<span th:text="${student.imie + ' ' + student.nazwisko + ' (' + student.nrIndeksu + ')'}">Student</span>
+					</label>
+					<p th:if="${#lists.isEmpty(studenci)}">Brak studentów do przypisania.</p>
+				</fieldset>
+
+				<fieldset th:if="*{projektId}">
+					<legend>Zadania projektu</legend>
+					<ul>
+						<li th:each="zadanie : ${zadaniaProjektu}">
+							<a th:href="@{/zadanieEdit(zadanieId=${zadanie.zadanieId})}" th:text="${zadanie.nazwa}">Zadanie</a>
+						</li>
+					</ul>
+					<a th:href="@{/zadanieEdit(projektId=${projekt.projektId})}">Dodaj zadanie do projektu</a>
+				</fieldset>
+
+				<div th:if="*{dataczasUtworzenia}">
+					<label for="dataczasUtworzenia" class="lbl">Utwórzony:</label>
+					<input th:field="*{dataczasUtworzenia}" class="fld" type="text" size="23" readonly />
+				</div>
+
+				<div th:if="*{dataczasModyfikacji}">
+					<label for="dataczasModyfikacji" class="lbl">Zmodyfikowany:</label>
+					<input th:field="*{dataczasModyfikacji}" class="fld" type="text" size="23" readonly />
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

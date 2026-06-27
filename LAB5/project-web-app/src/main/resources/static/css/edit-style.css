@@ -1,0 +1,72 @@
+.root {
+	text-align: center;
+}
+
+.nav {
+	background: #263238;
+	margin-bottom: 20px;
+	padding: 12px;
+}
+
+.nav a {
+	color: white;
+	margin: 0 12px;
+	text-decoration: none;
+}
+
+.container {
+	text-align: left;
+	display: inline-block;
+	min-width: 420px;
+}
+
+.fld {
+	padding: 5px;
+	margin: 5px;
+}
+
+.btn {
+	padding: 5px 10px;
+	margin: 5px;
+	cursor: pointer;
+}
+
+.btns-panel {
+	border: 1px solid darkGray;
+	background: lightGray;
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+.lbl {
+	display: block;
+	margin: 10px 5px 0 5px;
+}
+
+span.err,
+label.err {
+	color: red;
+}
+
+div.err {
+	background-color: #ffcccc;
+	border: 2px solid red;
+	text-align: left;
+	margin-bottom: 12px;
+}
+
+.err-field,
+textarea.err {
+	background-color: #ffcccc;
+}
+
+fieldset {
+	border: 1px solid darkGray;
+	margin: 16px 5px;
+	padding: 10px;
+}
+
+.check-row {
+	display: block;
+	margin: 5px 0;
+}
